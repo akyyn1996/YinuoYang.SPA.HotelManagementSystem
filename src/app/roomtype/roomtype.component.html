@@ -1,0 +1,25 @@
+<!-- <ul>
+    <li *ngFor= "let roomtype of roomtypes">
+        {{roomtype.id}}
+    </li>
+</ul> -->
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Description</th>
+        <th scope="col">Rent</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let roomtype of roomtypes">
+        
+        <td>{{roomtype.id}}</td>
+        <td>{{roomtype.rtdesc}}</td>
+        <td>{{roomtype.rent}}</td>
+      </tr>
+
+    </tbody>
+  </table>

@@ -1,0 +1,73 @@
+<div class="accordion" id="accordionExample" *ngIf="customer">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Customer Information
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <p><strong>Customer Name: {{customer.cName}}</strong></p>
+          <p>Booking Days: {{customer.bookingDays}}</p>
+          <p>Check-In Time: {{customer.checkIn}}</p>
+          <p>Total Persons: {{customer.totalPersons}}</p>
+          <p>Phone Number: {{customer.phone}}</p>
+          <p>Advance: {{customer.advance}}</p>
+          <p>Address: {{customer.address}}</p>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item" *ngIf="customer.room">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Customer`s Room Information
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+              <p><strong>Room Id: {{customer.roomNo}}</strong></p>
+            <p>RTCode: {{customer.room.rtCode}}</p>
+            <p>Room Type: {{customer.room.roomType.rtdesc}}</p>
+            <p>Room Rent: {{customer.room.roomType.rent}}</p>
+            <p>Room Occupied: {{customer.room.status}}</p>  
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item" *ngIf="customer.services">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Customer`s Services Information
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <table class="table">
+                <thead>
+                  <tr >
+                    <th scope="col">Id</th>
+                    <th scope="col">RoomNo</th>
+                    <th scope="col">Service Description</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Service Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor= "let service of customer.services">
+                    <th scope="row">{{service.id}}</th>
+                    <td>{{service.roomNo}}</td>
+                    <td>{{service.sdesc}}</td>
+                    <td>{{service.amount}}</td>
+                    <td>{{service.serviceDate}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+          </div>
+        </div>
+      </div>
+
+  </div>
