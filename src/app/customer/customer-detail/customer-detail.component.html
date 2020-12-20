@@ -1,7 +1,7 @@
 <div class="container " >
     
     <a [routerLink]="['/customer/create']"><button type="button" class="btn btn-success" >Create</button></a>
-    
+    <button class="btn btn-secondary" (click)="updateFormVis = true">Update</button>
     <button type="button" class="btn btn-danger" (click)="DeleteC()">Delete</button>
     
 </div>
@@ -23,6 +23,7 @@
           <p>Phone Number: {{customer.phone}}</p>
           <p>Advance: {{customer.advance}}</p>
           <p>Address: {{customer.address}}</p>
+          <p>E-Mail Address: {{customer.email}}</p>
 
         </div>
       </div>
@@ -80,3 +81,38 @@
       </div>
 
   </div>
+
+  <form (ngSubmit)="update()" #CreateForm="ngForm" *ngIf="updateFormVis">
+
+
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >Name</label>
+      <input  class="form-control" name="rent" [(ngModel)] = "customerRequest.cName">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >Address</label>
+      <input  class="form-control" name="rtdesc" [(ngModel)] = "customerRequest.address">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Phone</label>
+        <input  class="form-control" name="rtdesc" [(ngModel)] = "customerRequest.phone">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Email</label>
+        <input  class="form-control" name="rtdesc" [(ngModel)] = "customerRequest.email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Total Persons</label>
+        <input  class="form-control" name="rtdesc" [(ngModel)] = "customerRequest.totalPersons">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >BookingDays</label>
+        <input  class="form-control" name="rtdesc" [(ngModel)] = "customerRequest.bookingDays">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Advance</label>
+        <input  class="form-control" name="rtdesc" [(ngModel)] = "customerRequest.advance">
+      </div>
+
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>

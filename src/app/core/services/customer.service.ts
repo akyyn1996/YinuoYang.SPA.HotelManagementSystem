@@ -53,4 +53,16 @@ export class CustomerService {
 
 
     }
+
+    UpdateOne(model: CustomerCU):Observable<boolean>{
+      return this.apiService.update('customer', model).pipe(
+        map((response) => {
+          if (response) {
+            console.log(response);
+            return true;
+          }
+    
+          return false;
+        }));
+    }
 }

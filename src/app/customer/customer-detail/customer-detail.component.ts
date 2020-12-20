@@ -14,6 +14,9 @@ export class CustomerDetailComponent implements OnInit {
 
   customerId:number;
   customer:CustomerDetail;
+  customerRequest: CustomerCU = {};
+  updateFormVis:boolean = false;
+  
   constructor(private route: ActivatedRoute, private customerService:CustomerService) { }
 
   ngOnInit(): void {
@@ -34,6 +37,13 @@ export class CustomerDetailComponent implements OnInit {
 
   DeleteC(){
     this.customerService.deleteOne(this.customerId).subscribe();
+  }
+
+  update(){
+    console.log(this.customerRequest);
+    this.customerRequest.id = this.customerId;
+    this.customerRequest.checkIn = this.customer.checkIn;
+    this.customerService.UpdateOne(this.customerRequest).subscribe();
   }
 
 }

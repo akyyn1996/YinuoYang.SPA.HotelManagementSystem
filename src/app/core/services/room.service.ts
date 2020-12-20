@@ -15,6 +15,11 @@ export class RoomService {
   getAllRooms(): Observable<Room[]>{
     return this.apiService.getAll("room"); 
   }
+  getAllAvailableRooms(): Observable<Room[]>{
+    return this.apiService.getAll("room/available"); 
+  }
+
+
 
   deleteOne(id:number):Observable<boolean>{
     console.log(id);

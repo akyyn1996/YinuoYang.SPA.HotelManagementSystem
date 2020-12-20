@@ -3,7 +3,7 @@
       <tr>
         <th scope="col">Id</th>
         <th scope="col">RtCode</th>
-        <th scope="col">Available Now</th>
+        <th scope="col">Occupied Now</th>
         <th scope="col">Room Type</th>
       </tr>
     </thead>
@@ -33,7 +33,7 @@
         Select the Room to Delete
       </a>
       <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="navbarDropdown">
-        <a ngbDropdownItem class="dropdown-item" *ngFor= "let room of rooms" (click)="Delete(room.id)">{{room.id}}</a>
+        <a ngbDropdownItem class="dropdown-item" *ngFor= "let room of availableRooms" (click)="Delete(room.id)">{{room.id}}</a>
       </div>
   </div>
 

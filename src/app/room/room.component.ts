@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { RoomService } from '../core/services/room.service';
 import { Room } from '../shared/models/room';
 
@@ -10,6 +11,7 @@ import { Room } from '../shared/models/room';
 export class RoomComponent implements OnInit {
 
   rooms: Room[];
+  availableRooms: Room[] = [];
   roomRequest: Room={};
   createFormVis:boolean = false;
   updateFormVis:boolean = false;
@@ -18,7 +20,14 @@ export class RoomComponent implements OnInit {
   ngOnInit(): void {
     this.roomService.getAllRooms().subscribe((g)=>{
       this.rooms = g;
+      for (let i = 0; i < this.rooms.length; i++) {
+        const element = this.rooms[i];
+        if (element.status == false) {
+          this.availableRooms.push(element);
+        }
+      }
     })
+
   }
 
   Delete(id:number){
@@ -28,7 +37,7 @@ export class RoomComponent implements OnInit {
 
   create(){
     console.log(this.roomRequest);
-    this.roomRequest.status = true;
+    this.roomRequest.status = false;
     this.roomService.createNew(this.roomRequest).subscribe();
   }
   update(){

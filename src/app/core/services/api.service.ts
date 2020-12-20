@@ -34,6 +34,9 @@ export class ApiService {
     return this.http.get(getUrl).pipe(map((resp) => resp as any));
   }
 
+
+
+
   create(path: string, resource: any, options?: any): Observable<any> {
     let url = `${environment.apiUrl}${path}`;
     console.log(url);
