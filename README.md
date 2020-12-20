@@ -1,5 +1,7 @@
 # YinuoYangSPAHotelManagementSystem
 
+Implement the HotelManagementSystem frontend using Angular, users can do CRUD operations.
+The backend .NET Core part is in : [NET](https://github.com/akyyn1996/YinuoYang.API.HotelManagementSystem)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
 
 ## Development server
