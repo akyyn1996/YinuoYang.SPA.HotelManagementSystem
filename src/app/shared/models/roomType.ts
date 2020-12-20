@@ -1,5 +1,6 @@
 export interface RoomType{
-    id: number;
-    rtdesc: string;
-    rent: number;
+    id?: number;
+    rtdesc?: string;
+    rent?: number;
 }
+

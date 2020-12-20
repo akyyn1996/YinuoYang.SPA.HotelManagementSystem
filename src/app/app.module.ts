@@ -9,6 +9,8 @@ import { RoomtypeComponent } from './roomtype/roomtype.component';
 import { CustomerComponent } from './customer/customer.component';
 import { CustomerCardComponent } from './shared/components/customer-card/customer-card.component';
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
+import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
+import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,16 @@ import { CustomerDetailComponent } from './customer/customer-detail/customer-det
     RoomtypeComponent,
     CustomerComponent,
     CustomerCardComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    CustomerCreateComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

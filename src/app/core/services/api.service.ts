@@ -7,8 +7,12 @@ import {map} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
+  private headers: HttpHeaders;
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected http: HttpClient) {
+    this.headers = new HttpHeaders();
+    this.headers.append('Content-type', 'application/json');
+  }
   getAll(path: string): Observable<any[]> {
     let getUrl: string;
 
@@ -30,5 +34,38 @@ export class ApiService {
     return this.http.get(getUrl).pipe(map((resp) => resp as any));
   }
 
+  create(path: string, resource: any, options?: any): Observable<any> {
+    let url = `${environment.apiUrl}${path}`;
+    console.log(url);
+    
+    // console.log("in Create API");
+    // const body=JSON.stringify(resource);
+    // console.log(body);
+    // const headers = { 'content-type': 'application/json'}  
+    // return this.http.post(url, body,{'headers':headers})
+
+    return this.http
+      .post(url, resource, { headers: this.headers })
+      .pipe(map((response, error) => {
+        if(response){
+          console.log(response)
+          return response;
+        } 
+        else{
+          console.log(error)
+          return error;
+        }
+      }));
+  
+  
+    }
+  
+    Delete(path: string, id: number): Observable<any> {
+      let Url: string;
+      
+      Url = `${environment.apiUrl}${path}` + '/' + id;
+
+      return this.http.delete(Url).pipe(map((resp) => resp as any));
+    }
 
 }

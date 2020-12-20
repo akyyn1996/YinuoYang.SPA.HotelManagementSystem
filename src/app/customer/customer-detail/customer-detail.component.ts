@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { Customer } from 'src/app/shared/models/customer';
+import { CustomerDetail } from 'src/app/shared/models/customerdetail';
 
 @Component({
   selector: 'app-customer-detail',
@@ -12,7 +13,7 @@ import { Customer } from 'src/app/shared/models/customer';
 export class CustomerDetailComponent implements OnInit {
 
   customerId:number;
-  customer:Customer;
+  customer:CustomerDetail;
   constructor(private route: ActivatedRoute, private customerService:CustomerService) { }
 
   ngOnInit(): void {
@@ -29,6 +30,10 @@ export class CustomerDetailComponent implements OnInit {
       }
     )
 
+  }
+
+  DeleteC(){
+    this.customerService.deleteOne(this.customerId).subscribe();
   }
 
 }

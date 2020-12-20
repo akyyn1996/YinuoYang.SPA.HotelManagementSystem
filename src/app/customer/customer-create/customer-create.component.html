@@ -1,0 +1,43 @@
+<div class="container" >
+<form (ngSubmit)="create()" #CreateForm="ngForm">
+
+    <div ngbDropdown>
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="roomNo">
+            Select Room
+          </a>
+          <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a ngbDropdownItem class="dropdown-item" >Action</a>
+            <a ngbDropdownItem class="dropdown-item" >Another action</a>
+          </div>
+      </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Name</label>
+        <input  class="form-control" name="cName" [(ngModel)] = "CreateInformation.cName">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Address</label>
+        <input  class="form-control" name="address" [(ngModel)] = "CreateInformation.address">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Phone</label>
+        <input  class="form-control" name="phone" [(ngModel)] = "CreateInformation.phone">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >E-Mail</label>
+        <input  class="form-control" name="email" [(ngModel)] = "CreateInformation.email">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >TotalPersons</label>
+        <input  class="form-control" name="totalPersons" [(ngModel)] = "CreateInformation.totalPersons">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Advance</label>
+        <input  class="form-control" name="advance" [(ngModel)] = "CreateInformation.advance">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Booking Days</label>
+        <input  class="form-control" name="bookingDays" [(ngModel)] = "CreateInformation.bookingDays">
+      </div>
+    <button type="submit" class="btn btn-primary" >Submit</button>
+  </form>
+</div>
