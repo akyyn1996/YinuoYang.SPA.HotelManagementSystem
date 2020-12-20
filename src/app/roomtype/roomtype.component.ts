@@ -10,17 +10,17 @@ import { RoomType } from '../shared/models/roomType';
 export class RoomtypeComponent implements OnInit {
   roomtypes: RoomType[];
   roomtypeRequest: RoomType={};
-  updateorupdate:boolean = false;
+  createFormVis:boolean = false;
+  updateFormVis:boolean = false;
   constructor(private roomTypeService: RoomtypeService) { }
 
   ngOnInit(): void {
     this.roomTypeService.getAllRoomTypes().subscribe((g) => {
-
       this.roomtypes = g;
     })
   }
 
-  DeleteT(id:number){
+  Delete(id:number){
     console.log(id);
     this.roomTypeService.deleteOne(id).subscribe();
   }
@@ -28,6 +28,10 @@ export class RoomtypeComponent implements OnInit {
   create(){
     console.log(this.roomtypeRequest);
     this.roomTypeService.createNew(this.roomtypeRequest).subscribe();
+  }
+  update(){
+    console.log(this.roomtypeRequest);
+    this.roomTypeService.UpdateOne(this.roomtypeRequest).subscribe();
   }
 
 }

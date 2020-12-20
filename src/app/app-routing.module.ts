@@ -4,7 +4,9 @@ import { Z_FULL_FLUSH } from 'zlib';
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { CustomerComponent } from './customer/customer.component';
+import { RoomComponent } from './room/room.component';
 import { RoomtypeComponent } from './roomtype/roomtype.component';
+import { ServiceComponent } from './service/service.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,14 @@ const routes: Routes = [
   {
     path:"roomtype",
     component: RoomtypeComponent,
+  },
+  {
+    path:"service",
+    component: ServiceComponent,
+  },
+  {
+    path:"room",
+    component: RoomComponent,
   },
 
 

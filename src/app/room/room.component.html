@@ -1,0 +1,63 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">RtCode</th>
+        <th scope="col">Available Now</th>
+        <th scope="col">Room Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let room of rooms">
+        
+        <td>{{room.id}}</td>
+        <td>{{room.rtCode}}</td>
+        <td>{{room.status}}</td>
+        <td>{{room.roomType.rtdesc}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-primary" (click)="createFormVis = true;updateFormVis = false">Create</button>
+        <button class="btn btn-secondary" (click)="updateFormVis = true;createFormVis = false">Update</button>
+      </div>
+    </div>
+  </div>
+
+  <div ngbDropdown>
+    <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="roomNo">
+        Select the Room to Delete
+      </a>
+      <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a ngbDropdownItem class="dropdown-item" *ngFor= "let room of rooms" (click)="Delete(room.id)">{{room.id}}</a>
+      </div>
+  </div>
+
+  <form (ngSubmit)="create()" #CreateForm="ngForm" *ngIf="createFormVis">
+
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >RtCode</label>
+      <input  class="form-control" name="rent" [(ngModel)] = "roomRequest.rtCode">
+    </div>
+
+
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+
+<form (ngSubmit)="update()" #CreateForm="ngForm" *ngIf="updateFormVis">
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Room Id</label>
+        <input  class="form-control" name="rent" [(ngModel)] = "roomRequest.id">
+      </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >RtCode</label>
+      <input  class="form-control" name="rent" [(ngModel)] = "roomRequest.rtCode">
+    </div>
+
+
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>

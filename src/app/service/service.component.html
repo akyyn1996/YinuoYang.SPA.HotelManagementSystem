@@ -1,0 +1,84 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">RoomNo</th>
+        <th scope="col">Service Date</th>
+        <th scope="col">Description</th>
+        <th scope="col">Amount</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let service of services">
+        
+        <td>{{service.id}}</td>
+        <td>{{service.roomNo}}</td>
+        <td>{{service.serviceDate}}</td>
+        <td>{{service.sdesc}}</td>
+        <td>{{service.amount}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <button class="btn btn-primary" (click)="createFormVis = true;updateFormVis = false">Create</button>
+        <button class="btn btn-secondary" (click)="updateFormVis = true;createFormVis = false">Update</button>
+      </div>
+    </div>
+  </div>
+
+  <div ngbDropdown>
+    <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="roomNo">
+        Select the Service to Delete
+      </a>
+      <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a ngbDropdownItem class="dropdown-item" *ngFor= "let service of services" (click)="Delete(service.id)">{{service.id}}</a>
+      </div>
+  </div>
+
+  <form (ngSubmit)="create()" #CreateForm="ngForm" *ngIf="createFormVis">
+
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >RoomNo</label>
+      <input  class="form-control" name="rent" [(ngModel)] = "serviceRequest.roomNo">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >Description</label>
+      <input  class="form-control" name="rtdesc" [(ngModel)] = "serviceRequest.sdesc">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Amount</label>
+        <input  class="form-control" name="rtdesc" [(ngModel)] = "serviceRequest.amount">
+      </div>
+
+
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
+
+<form (ngSubmit)="update()" #CreateForm="ngForm" *ngIf="updateFormVis">
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >ServiceId</label>
+        <input  class="form-control" name="rent" [(ngModel)] = "serviceRequest.id" #serviceInpuId> 
+      </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >RoomNo</label>
+      <input  class="form-control" name="rent" [(ngModel)] = "serviceRequest.roomNo">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >Description</label>
+      <input  class="form-control" name="rtdesc" [(ngModel)] = "serviceRequest.sdesc">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Amount</label>
+        <input  class="form-control" name="rtdesc" [(ngModel)] = "serviceRequest.amount">
+      </div>
+
+
+
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>

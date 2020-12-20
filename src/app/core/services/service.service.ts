@@ -1,30 +1,24 @@
 import { Injectable } from '@angular/core';
+import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { RoomType } from 'src/app/shared/models/roomType';
-import { ApiService } from './api.service';
+import { Service } from 'src/app/shared/models/service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RoomtypeService {
-
-
+export class ServiceService {
 
   constructor(private apiService:ApiService) {
 
   }
-
- getAllRoomTypes(): Observable<RoomType[]>{
-   return this.apiService.getAll("roomtype");
-   
- }
-
-
-
- deleteOne(id:number):Observable<boolean>{
+  getAllServices(): Observable<Service[]>{
+    return this.apiService.getAll("service");
+    
+  }
+   deleteOne(id:number):Observable<boolean>{
   console.log(id);
-  return this.apiService.Delete('roomtype',id).pipe(
+  return this.apiService.Delete('service',id).pipe(
     map((response) => {
       if (response) {
         console.log(response);
@@ -32,24 +26,9 @@ export class RoomtypeService {
       }
       return false;
     }));
-  }
-
-  createNew(model: RoomType):Observable<boolean>{
-    return this.apiService.create('roomtype', model).pipe(
-      map((response) => {
-        if (response) {
-          console.log(response);
-          return true;
-        }
-  
-        return false;
-      })
-    );
-  }
-
-  UpdateOne(model: RoomType):Observable<boolean>{
-    //return this.apiService.create('customer',model);
-    return this.apiService.update('roomtype', model).pipe(
+   }
+   createNew(model: Service):Observable<boolean>{
+    return this.apiService.create('service', model).pipe(
       map((response) => {
         if (response) {
           console.log(response);
@@ -59,5 +38,16 @@ export class RoomtypeService {
         return false;
       }));
   }
-
+  
+  UpdateOne(model: Service):Observable<boolean>{
+    return this.apiService.update('service', model).pipe(
+      map((response) => {
+        if (response) {
+          console.log(response);
+          return true;
+        }
+  
+        return false;
+      }));
+  }
 }

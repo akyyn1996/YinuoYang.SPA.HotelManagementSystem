@@ -11,6 +11,8 @@ import { CustomerCardComponent } from './shared/components/customer-card/custome
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { CustomerCreateComponent } from './customer/customer-create/customer-create.component';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
+import { RoomComponent } from './room/room.component';
+import { ServiceComponent } from './service/service.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
     CustomerComponent,
     CustomerCardComponent,
     CustomerDetailComponent,
-    CustomerCreateComponent
+    CustomerCreateComponent,
+    RoomComponent,
+    ServiceComponent
   ],
   imports: [
     BrowserModule,

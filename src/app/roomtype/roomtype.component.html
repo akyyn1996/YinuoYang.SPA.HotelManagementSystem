@@ -27,8 +27,8 @@
   <div class="container">
     <div class="row">
       <div class="col text-center">
-        <button class="btn btn-primary" (click)="updateorupdate = true">Create</button>
-        <button class="btn btn-secondary">Update</button>
+        <button class="btn btn-primary" (click)="createFormVis = true;updateFormVis = false">Create</button>
+        <button class="btn btn-secondary" (click)="updateFormVis = true;createFormVis = false">Update</button>
       </div>
     </div>
   </div>
@@ -37,17 +37,17 @@
 
     <div ngbDropdown>
         <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="roomNo">
-            Select the Room to Delete
+            Select the RoomType to Delete
           </a>
           <div ngbDropdownMenu  class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a ngbDropdownItem class="dropdown-item" *ngFor= "let roomtype of roomtypes" (click)="DeleteT(roomtype.id)">{{roomtype.id}}</a>
+            <a ngbDropdownItem class="dropdown-item" *ngFor= "let roomtype of roomtypes" (click)="Delete(roomtype.id)">{{roomtype.id}}</a>
           </div>
       </div>
 
 
 
 
-  <form (ngSubmit)="create()" #CreateForm="ngForm" *ngIf="updateorupdate">
+  <form (ngSubmit)="create()" #CreateForm="ngForm" *ngIf="createFormVis">
 
       <div class="form-group">
         <label for="exampleInputPassword1" class="form-label" >Rent</label>
@@ -60,5 +60,23 @@
 
     <button type="submit" class="btn btn-primary" >Submit</button>
   </form>
+
+  <form (ngSubmit)="update()" #CreateForm="ngForm" *ngIf="updateFormVis">
+
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label" >Id</label>
+        <input  class="form-control" name="Id" [(ngModel)] = "roomtypeRequest.id">
+      </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >Rent</label>
+      <input  class="form-control" name="rent" [(ngModel)] = "roomtypeRequest.rent">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1" class="form-label" >Description</label>
+      <input  class="form-control" name="rtdesc" [(ngModel)] = "roomtypeRequest.rtdesc">
+    </div>
+
+  <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
 
   

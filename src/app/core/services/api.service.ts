@@ -37,13 +37,6 @@ export class ApiService {
   create(path: string, resource: any, options?: any): Observable<any> {
     let url = `${environment.apiUrl}${path}`;
     console.log(url);
-    
-    // console.log("in Create API");
-    // const body=JSON.stringify(resource);
-    // console.log(body);
-    // const headers = { 'content-type': 'application/json'}  
-    // return this.http.post(url, body,{'headers':headers})
-
     return this.http
       .post(url, resource, { headers: this.headers })
       .pipe(map((response, error) => {
@@ -60,6 +53,25 @@ export class ApiService {
   
     }
   
+    update(path: string, resource: any, options?: any): Observable<any> {
+      let url = `${environment.apiUrl}${path}`;
+      console.log(url);
+      return this.http
+        .put(url, resource, { headers: this.headers })
+        .pipe(map((response, error) => {
+          if(response){
+            console.log(response)
+            return response;
+          } 
+          else{
+            console.log(error)
+            return error;
+          }
+        }));
+    
+    
+      }
+
     Delete(path: string, id: number): Observable<any> {
       let Url: string;
       
