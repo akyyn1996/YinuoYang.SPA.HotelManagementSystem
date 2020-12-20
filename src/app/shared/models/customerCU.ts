@@ -1,4 +1,4 @@
-interface CustomerCU {
+export interface CustomerCU {
     id?: number;
     roomNo?: number;
     cName?: string;

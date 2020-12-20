@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { CustomerService } from 'src/app/core/services/customer.service';
 import { RoomService } from 'src/app/core/services/room.service';
-import { Customer } from 'src/app/shared/models/customer';
+import { CustomerCU } from 'src/app/shared/models/customerCU';
 import { CustomerDetail } from 'src/app/shared/models/customerdetail';
 
 @Component({

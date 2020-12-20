@@ -4,6 +4,7 @@ import { Customer } from 'src/app/shared/models/customer';
 import { CustomerDetail } from 'src/app/shared/models/customerdetail';
 import { ApiService } from './api.service';
 import {map} from 'rxjs/operators';
+import { CustomerCU } from 'src/app/shared/models/customerCU';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class CustomerService {
 
   }
 
-  createNew(model: CustomerCU):Observable<boolean>{
+  createNew(model: CustomerCU):Observable<boolean>{ 
     //return this.apiService.create('customer',model);
     return this.apiService.create('customer', model).pipe(
       map((response) => {
