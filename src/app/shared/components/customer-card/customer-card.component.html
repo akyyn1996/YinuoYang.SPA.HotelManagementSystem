@@ -11,7 +11,7 @@
         <a [routerLink]="['/customer', customer.id]">
             <h5 class="card-title">{{customer.cName}}</h5>
         </a>
-        <p class="card-text">check-in time: {{customer.checkIn}}</p>
+        <p class="card-text">check-in time: {{customer.checkIn.substring(0,19)}}</p>
         <p class="card-text">booking days: {{customer.bookingDays}}</p>
         <p class="card-text">phone: {{customer.phone}}</p>
     

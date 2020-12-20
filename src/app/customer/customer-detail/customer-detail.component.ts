@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { toJSDate } from '@ng-bootstrap/ng-bootstrap/datepicker/ngb-calendar';
 import { CustomerService } from 'src/app/core/services/customer.service';
+import { RoomService } from 'src/app/core/services/room.service';
 import { Customer } from 'src/app/shared/models/customer';
 import { CustomerDetail } from 'src/app/shared/models/customerdetail';
 
@@ -17,7 +18,7 @@ export class CustomerDetailComponent implements OnInit {
   customerRequest: CustomerCU = {};
   updateFormVis:boolean = false;
   
-  constructor(private route: ActivatedRoute, private customerService:CustomerService) { }
+  constructor(private route: ActivatedRoute, private customerService:CustomerService, private roomService:RoomService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(
@@ -37,6 +38,9 @@ export class CustomerDetailComponent implements OnInit {
 
   DeleteC(){
     this.customerService.deleteOne(this.customerId).subscribe();
+    let updateroom = this.customer.room;
+    updateroom.status = false;
+    this.roomService.UpdateOne(updateroom).subscribe();
   }
 
   update(){
